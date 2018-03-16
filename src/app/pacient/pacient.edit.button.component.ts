@@ -6,9 +6,8 @@ import { IPacient } from "../models/pacient";
 @Component({
     selector: 'options-cell',
     template: `
-                <span><button style="height: 20px" (click)="addPacient()">Add</button></span>
                 <span><button style="height: 20px" (click)="editPacient()">Edit</button></span>
-               <span><button style="height: 20px" (click)="removePacient()">Remove</button></span>
+                <span><button style="height: 20px" (click)="removePacient()">Remove</button></span>
                `
 })
 export class EditPacientButtonComponent implements ICellRendererAngularComp {
