@@ -1,0 +1,33 @@
+<div *ngIf="pacient" style="text-align:center">
+    <label for="pacientId">Pacient Id</label>
+    <input id="pacientId" type="text" placeholder="Pacient Id..." [(ngModel)]="pacient.pacientId" />
+
+    <label for="firstName">First Name</label>
+    <input id="firstName" type="text" placeholder="First Name..." [(ngModel)]="pacient.firstName" />
+
+    <label for="lastName">Last Name</label>
+    <input id="lastName" type="text" placeholder="Last Name..." [(ngModel)]="pacient.lastName"/>
+
+    <label for="title">Title</label>
+    <input id="title" type="text" placeholder="Title..." [(ngModel)]="pacient.title"/>
+
+    <label for="job">Job</label>
+    <input id="job" type="text" placeholder="Job..." [(ngModel)]="pacient.job"/>
+</div>
+
+<button (click)="updatePacient()">Update</button>
+
+<div *ngIf="medications.length > 0" style="text-align:center">
+    <ag-grid-angular #agGrid style="width: 800px; height: 300px;" class="ag-fresh" 
+        [gridOptions]="gridOptions" 
+        [columnDefs]="columnDefs"
+        [rowData]="medications"
+        enableFilter
+        enableSorting
+        enableColResize>
+    </ag-grid-angular>
+</div>
+
+<h1>This is {{componentName}}</h1>
+<h2>Pacient Id: {{pacientId}}</h2>
+<h3>Job: {{pacient?.job}}</h3>
