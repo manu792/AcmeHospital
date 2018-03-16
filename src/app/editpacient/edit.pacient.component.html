@@ -1,33 +1,46 @@
-<div *ngIf="pacient" style="text-align:center">
-    <label for="pacientId">Pacient Id</label>
-    <input id="pacientId" type="text" placeholder="Pacient Id..." [(ngModel)]="pacient.pacientId" />
-
-    <label for="firstName">First Name</label>
-    <input id="firstName" type="text" placeholder="First Name..." [(ngModel)]="pacient.firstName" />
-
-    <label for="lastName">Last Name</label>
-    <input id="lastName" type="text" placeholder="Last Name..." [(ngModel)]="pacient.lastName"/>
-
-    <label for="title">Title</label>
-    <input id="title" type="text" placeholder="Title..." [(ngModel)]="pacient.title"/>
-
-    <label for="job">Job</label>
-    <input id="job" type="text" placeholder="Job..." [(ngModel)]="pacient.job"/>
+<div class="container">
+        <div class="row">
+                <div *ngIf="pacient">
+                    <form #f="ngForm" (ngSubmit)="updatePacient(f)">
+                        <div class="form-group">
+                                <label for="pacientId">Pacient Id</label>
+                                <input id="pacientId" name="pacientId" type="text" placeholder="Pacient Id..." class="form-control" [ngModel]="pacient.pacientId" />
+                        </div>
+                        <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input id="firstName" name="firstName" type="text" placeholder="First Name..." class="form-control" [ngModel]="pacient.firstName" />
+                        </div>
+                        <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input id="lastName" name="lastName" type="text" placeholder="Last Name..." class="form-control" [ngModel]="pacient.lastName"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="title">Title</label>
+                                <input id="title" name="title" type="text" placeholder="Title..." class="form-control" [ngModel]="pacient.title"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="job">Job</label>
+                                <input id="job" name="job" type="text" placeholder="Job..." class="form-control" [ngModel]="pacient.job"/>
+                        </div>
+                        <input class="btn btn-block" type="submit" value="Update" />
+                    </form>
+                </div>
+            </div>
+            
+            <div class="row">
+                    <div *ngIf="medications.length > 0" style="text-align:center">
+                            <ag-grid-angular #agGrid style="width: 800px; height: 300px;" class="ag-fresh" 
+                                [gridOptions]="gridOptions" 
+                                [columnDefs]="columnDefs"
+                                [rowData]="medications"
+                                enableFilter
+                                enableSorting
+                                enableColResize>
+                            </ag-grid-angular>
+                        </div>
+                        
+                        <h1>This is {{componentName}}</h1>
+                        <h2>Pacient Id: {{pacientId}}</h2>
+                        <h3>Job: {{pacient?.job}}</h3>
+            </div>
 </div>
-
-<button (click)="updatePacient()">Update</button>
-
-<div *ngIf="medications.length > 0" style="text-align:center">
-    <ag-grid-angular #agGrid style="width: 800px; height: 300px;" class="ag-fresh" 
-        [gridOptions]="gridOptions" 
-        [columnDefs]="columnDefs"
-        [rowData]="medications"
-        enableFilter
-        enableSorting
-        enableColResize>
-    </ag-grid-angular>
-</div>
-
-<h1>This is {{componentName}}</h1>
-<h2>Pacient Id: {{pacientId}}</h2>
-<h3>Job: {{pacient?.job}}</h3>

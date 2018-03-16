@@ -4,6 +4,7 @@ import { GridOptions } from "ag-grid";
 import { IPacient } from "../models/pacient";
 import { ActivatedRoute, Router } from "@angular/router";
 import { IMedication } from "../models/medication";
+import { NgForm } from "@angular/forms";
 
 @Component({
     selector: 'edit-pacient-comp',
@@ -45,8 +46,9 @@ export class EditPacientById implements OnInit {
         }
     }
 
-    updatePacient(){
+    updatePacient(f: NgForm){
         // Here goes the logic for updating the pacient information in the DB
-        console.log(this.pacient);
+        console.log(f.value);
+        this.pacientService.updatePacient(f.value);
     }
 }

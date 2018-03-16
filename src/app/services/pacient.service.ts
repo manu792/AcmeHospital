@@ -5,7 +5,7 @@ import { IPacient } from '../models/pacient';
 
 @Injectable()
 export class PacientService {
-    private pacients: IPacient[] = [
+    private static pacients: IPacient[] = [
         { 
             pacientId: 1, 
             firstName: 'Manuel',
@@ -94,8 +94,8 @@ export class PacientService {
             ]
         }
     ];
-    addPacient(pacient: IPacient) {
-        this.pacients.push(pacient);
+    addPacient(pacient: IPacient): void {
+        PacientService.pacients.push(pacient);
     }
     
     // returns all pacients in the data store
@@ -108,8 +108,25 @@ export class PacientService {
         let pacient = this.getFakePacients().find(p => p.pacientId == pacientId);
         return Observable.of(pacient);
     }
+
+    updatePacient(pacient: IPacient): void{
+        let pacientToUpdate = null;
+        this.getPacientById(pacient.pacientId).subscribe(pacient => pacientToUpdate = pacient);
+        
+        if(pacientToUpdate){
+            PacientService.pacients.forEach(p => {
+                if(p.pacientId == pacient.pacientId) {
+                    p.pacientId = pacient.pacientId;
+                    p.firstName = pacient.firstName;
+                    p.lastName = pacient.lastName;
+                    p.title = pacient.title;
+                    p.job = pacient.job;
+                }
+            });
+        }
+    }
     
     private getFakePacients() : IPacient[] {
-        return this.pacients;
+        return PacientService.pacients;
     }
 }
