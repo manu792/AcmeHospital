@@ -1,13 +1,16 @@
 <div class="row">
-  <div style="text-align:center">
-    <ag-grid-angular #agGrid style="width: 900px; height: 250px;" class="ag-fresh" 
-      [gridOptions]="gridOptions" 
-      [columnDefs]="columnDefs" 
-      [rowData]="pacients"
-      enableFilter
-      enableSorting
-      enableColResize>
-    </ag-grid-angular>
+  <div class="col-md-6 col-md-offset-3">
+      <input type="text" id="filter-text-box" placeholder="Filter..." (input)="onFilterTextChanged($event)"/>
+      <div style="text-align:center">
+        <ag-grid-angular #agGrid style="width: 900px; height: 250px;" class="ag-fresh" 
+          [gridOptions]="gridOptions" 
+          [columnDefs]="columnDefs" 
+          [rowData]="pacients"
+          enableFilter
+          enableSorting
+          enableColResize>
+        </ag-grid-angular>
+      </div>
   </div>
 </div>
 <div class="row">

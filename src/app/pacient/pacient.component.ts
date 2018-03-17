@@ -66,6 +66,11 @@ export class PacientComponent implements OnInit {
         this.gridOptions.api.setRowData(this.gridOptions.rowData);
     }
 
+    onFilterTextChanged(event) {
+        let text = event.target.value;
+        this.gridOptions.api.setQuickFilter(text);
+    }
+
     private handleError(error: string) {
         alert(error);
     }

@@ -27,20 +27,19 @@
                 </div>
             </div>
             
-            <div class="row">
-                    <div *ngIf="medications.length > 0" style="text-align:center">
-                            <ag-grid-angular #agGrid style="width: 800px; height: 300px;" class="ag-fresh" 
-                                [gridOptions]="gridOptions" 
-                                [columnDefs]="columnDefs"
-                                [rowData]="medications"
-                                enableFilter
-                                enableSorting
-                                enableColResize>
-                            </ag-grid-angular>
-                        </div>
-                        
-                        <h1>This is {{componentName}}</h1>
-                        <h2>Pacient Id: {{pacientId}}</h2>
-                        <h3>Job: {{pacient?.job}}</h3>
+            <div *ngIf="medications.length > 0" style="text-align:center">
+                        <div class="row">
+                                        <ag-grid-angular #agGrid style="width: 800px; height: 300px;" class="ag-fresh" 
+                                                [gridOptions]="gridOptions" 
+                                                [columnDefs]="columnDefs"
+                                                [rowData]="medications"
+                                                enableFilter
+                                                enableSorting
+                                                enableColResize>
+                                        </ag-grid-angular>    
+                                        <h1>This is {{componentName}}</h1>
+                                        <h2>Pacient Id: {{pacientId}}</h2>
+                                        <h3>Job: {{pacient?.job}}</h3>
+                        </div>          
             </div>
 </div>
