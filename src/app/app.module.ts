@@ -9,6 +9,7 @@ import { PacientModule } from './pacient/pacient.module';
 import { EditPacientModule } from './editpacient/edit.pacient.module';
 import { AppRoutingModule } from './app.routing.module';
 import { FormsModule } from '@angular/forms';
+import {AgGridModule} from "ag-grid-angular/main";
 
 @NgModule({
   declarations: [
